@@ -113,3 +113,20 @@
   color: #000000;
   margin-top: 15px;
 }
+
+/*Transición suave para opciones del menu*/
+.nav-link {
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+.nav-link:hover {
+  transform: scale(1.1);
+  color: #00adb5;
+}
+.navbar-hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+.navbar-container {
+  transition: transform 0.3s ease-in-out;
+}
