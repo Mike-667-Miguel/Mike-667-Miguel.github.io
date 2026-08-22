@@ -17,9 +17,9 @@
 }
 
 /* Alineación vertical de los elementos */
-.navbar-vertical {
+.navbar-horizontal {
   display: flex;
-  flex-direction: column; /* Apila los enlaces de arriba a abajo */
+  flex-direction: row; /* Apila los enlaces de arriba a abajo */
   align-items: center;    /* Centra los enlaces horizontalmente */
   gap: 12px;              /* Espacio uniforme entre cada enlace */
 }
