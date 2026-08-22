@@ -42,7 +42,7 @@
 /*Efecto Hero Section - Image*/
 .hero-section {
   height: 100vh; /* Ocupa toda la altura de la ventana */
-  background-image: url('path/to/your/image.jpg'); /* Cambia la ruta a tu imagen */
+  background-image: url('images/hacker.jpg'); /* Cambia la ruta a tu imagen */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
