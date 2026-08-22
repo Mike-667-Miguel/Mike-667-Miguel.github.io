@@ -130,3 +130,33 @@
 .navbar-container {
   transition: transform 0.3s ease-in-out;
 }
+
+/*#############################*/
+/*PARCIAL 1*/
+/*#############################*/
+/*Efecto Hero Section - Image*/
+.hero-sectionP1 {
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-image: url('images/mano.jfif'); /* Cambia la ruta a tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10%; /* Espacio a la izquierda para separar del borde */
+  text-align: left;
+}
+
+.hero-texto {
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.hero-texto h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
