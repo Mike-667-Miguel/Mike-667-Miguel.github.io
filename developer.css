@@ -20,8 +20,10 @@
 .navbar-horizontal {
   display: flex;
   flex-direction: row; /* Apila los enlaces de arriba a abajo */
+  justify-content: flex-start;
   align-items: center;    /* Centra los enlaces horizontalmente */
-  gap: 12px;              /* Espacio uniforme entre cada enlace */
+  padding-left: 50px; /* Espacio a la izquierda para separar del borde */
+  gap: 30px;              /* Espacio uniforme entre cada enlace */
 }
 
 /* Estilo de los enlaces */
@@ -48,9 +50,10 @@
   background-attachment: fixed;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  text-align: center;
+  padding-left: 10%; /* Espacio a la izquierda para separar del borde */
+  text-align: left;
 }
 
 .hero-texto {
@@ -69,8 +72,8 @@
 .info-section {
   background-color: #1a1a1d;
   color: #ffffff;
-  padding: 80px 20px;
-  min-height: 100vh; /* Asegura que la sección ocupe al menos toda la altura de la ventana */
+  padding: 40px 10%;
+  /*in-height: 100vh; /* Asegura que la sección ocupe al menos toda la altura de la ventana */
 }
 
 .info-contenedor{
