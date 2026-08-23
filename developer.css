@@ -89,6 +89,24 @@
   color: #00adb5;
 }
 
+/*Tarjetas del contenedor*/
+
+.tarjeta-perfil {
+  background-color: #25252d; /* Un gris sutilmente más claro que el fondo general */
+  border: 1px solid #33333e; /* Borde muy delgado para definir la caja */
+  border-radius: 12px;       /* Esquinas redondeadas */
+  padding: 30px;             /* Espacio interno para que el texto respire */
+  margin-bottom: 30px;       /* Separación entre una tarjeta y la de abajo */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4); /* Sombra para dar profundidad */
+  transition: transform 0.3s ease; /* Transición por si le ponemos un efecto */
+}
+.tarjeta-perfil:hover {
+  transform: translateY(-5px);
+}
+.tarjeta-perfil p {
+  margin-bottom: 12px;
+}
+
 /*Footer*/
 .footer {
   background-color: #ffffff;
