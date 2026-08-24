@@ -59,7 +59,7 @@
   background-image: url('images/hacker.jpg'); /* Cambia la ruta a tu imagen */
   background-size: cover;
   background-position: center;
-  height: 250px; /* Define la altura para que la imagen sea visible */
+  height: 150px; /* Define la altura para que la imagen sea visible */
   width: 100%;
 }
 .hero-texto {
