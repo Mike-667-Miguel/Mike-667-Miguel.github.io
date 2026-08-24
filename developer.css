@@ -87,7 +87,18 @@
   padding: 40px 10%;
   /*in-height: 100vh; /* Asegura que la sección ocupe al menos toda la altura de la ventana */
 }
-
+.info-section2 {
+  background-color: #1a1a1d;
+  color: #ffffff;
+  padding: 40px 10%;
+  /*in-height: 100vh; /* Asegura que la sección ocupe al menos toda la altura de la ventana */
+}
+.info-section3 {
+  background-color: #1a1a1d;
+  color: #ffffff;
+  padding: 40px 10%;
+  /*in-height: 100vh; /* Asegura que la sección ocupe al menos toda la altura de la ventana */
+}
 .info-contenedor{
   max-width: 95%;
   margin: 0 auto;
