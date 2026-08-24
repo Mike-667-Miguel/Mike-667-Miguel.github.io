@@ -55,7 +55,19 @@
   padding-left: 10%; /* Espacio a la izquierda para separar del borde */
   text-align: left;
 }
+.hero-section2 {
+  height: 60vh; /* Ocupa toda la altura de la ventana */
+  background-image: url('images/hacker.jpg'); /* Cambia la ruta a tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10%; /* Espacio a la izquierda para separar del borde */
+  text-align: left;
+}
 .hero-texto {
   color: #ffffff;
   font-family: 'Arial', sans-serif;
@@ -87,24 +99,6 @@
   font-size: 2rem;
   margin-bottom: 20px;
   color: #00adb5;
-}
-
-/*Tarjetas del contenedor*/
-
-.tarjeta-perfil {
-  background-color: #25252d; /* Un gris sutilmente más claro que el fondo general */
-  border: 1px solid #33333e; /* Borde muy delgado para definir la caja */
-  border-radius: 12px;       /* Esquinas redondeadas */
-  padding: 30px;             /* Espacio interno para que el texto respire */
-  margin-bottom: 30px;       /* Separación entre una tarjeta y la de abajo */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4); /* Sombra para dar profundidad */
-  transition: transform 0.3s ease; /* Transición por si le ponemos un efecto */
-}
-.tarjeta-perfil:hover {
-  transform: translateY(-5px);
-}
-.tarjeta-perfil p {
-  margin-bottom: 12px;
 }
 
 /*Footer*/
