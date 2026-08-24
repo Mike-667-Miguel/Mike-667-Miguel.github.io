@@ -178,3 +178,30 @@
   font-size: 3rem;
   margin-bottom: 20px;
 }
+
+/*Imagenes de Act 3*/
+/* Estilos para centrar el bloque completo */
+.bloque-imagen-centrada {
+    display: block;        /* Asegura que ocupe su propia línea */
+    margin-left: auto;     /* Centrado horizontal */
+    margin-right: auto;    /* Centrado horizontal */
+    width: 80%;            /* O el ancho que quieras que ocupe la imagen (ej: 300px o 80%) */
+    text-align: center;    /* Centra la descripción (el figcaption) */
+    background-color: transparent; /* Por si acaso, para que no herede fondos extraños */
+}
+
+/* Estilos específicos para la imagen */
+.bloque-imagen-centrada img {
+    max-width: 100%;       /* Hace que la imagen sea responsiva (no se salga de su contenedor) */
+    height: auto;          /* Mantiene la proporción */
+    border-radius: 8px;    /* Opcional: bordes redondeados (quítalo si no te gusta) */
+    display: inline-block; /* Para que text-align: center del padre funcione */
+}
+
+/* Estilos opcionales para que la descripción se vea pro */
+.bloque-imagen-centrada figcaption {
+    margin-top: 10px;      /* Espacio entre la foto y el texto */
+    font-size: 0.9rem;     /* Texto un poco más pequeño */
+    color: #cccccc;        /* Un color gris claro (si tu fondo es oscuro) */
+    font-style: italic;    /* Texto en cursiva para que se note que es pie de foto */
+}
