@@ -193,3 +193,22 @@
     color: #cccccc;        /* Un color gris claro (si tu fondo es oscuro) */
     font-style: italic;    /* Texto en cursiva para que se note que es pie de foto */
 }
+
+/*Boton de actividad 3*/
+.btn-descargar {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #007acc; /* Puedes cambiar este azul por verde cibernético o el color de tu diseño */
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 15px 0;
+}
+
+/* Efecto al pasar el mouse por encima */
+.btn-descargar:hover {
+    background-color: #005999;
+    transform: translateY(-2px);
+}
