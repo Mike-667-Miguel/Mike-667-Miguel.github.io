@@ -212,3 +212,19 @@
     background-color: #005999;
     transform: translateY(-2px);
 }
+
+/*Actividad 4*/
+/*Efecto Hero Section - Image*/
+.hero-sectionP2 {
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-image: url('images/phishing.jpg'); /* Cambia la ruta a tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10%; /* Espacio a la izquierda para separar del borde */
+  text-align: left;
+}
