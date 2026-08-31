@@ -108,75 +108,157 @@
 
 <section class="info-section">
   <div class="info-contenedor">
-    <h1>Actividad 3 | No presiones Esc... todavía</h1>
+    <h1>Actividad 4 | Una pagina muy convincente</h1>
     <p>Miguel Ángel Salazar Martinez | 183833</p>
     <p>Profesor: Servando López</p>
     <p>Universidad Politécnica de San Luis Potosi</p>
-    <p>Act 3 | No presiones Esc... todavía</p>
-    <p>24/08/26</p>
+    <p>Act 4 | Una pagina muy convincente</p>
+    <p>31/08/26</p>
     <br>  
     <p>Introducción</p>
     <p>
-    El presente documento detalla el desarrollo de una actividad académica enfocada en
-    la creación de un spyware (específicamente, un keylogger). El objetivo principal de este
-    ejercicio fue diseñar un programa capaz de registrar las teclas presionadas por un
-    usuario, abarcando tanto caracteres alfanuméricos como teclas especiales (tales
-    como Shift o Ctrl). Asimismo, el programa fue configurado para asociar cada pulsación
-    con su respectiva estampa de tiempo, registrando la fecha y hora exacta de cada
-    evento.
-    <a href="images/Act3/P1act3.pdf" download="P1act3.pdf" class="btn-descargar">
+    Durante los últimos días, colaboradores de la empresa de tecnología e innovación Matrix recibieron
+    correos electrónicos fraudulentos que suplantaban la identidad del departamento de TI. En dichos
+    mensajes se solicitaba con urgencia actualizar sus credenciales de acceso, bajo la amenaza de suspender
+    sus cuentas y desactivar su acceso a las herramientas de trabajo.
+    Tras la investigación, el equipo de ciberseguridad identificó que se trataba de un ataque de phishing.
+    Los correos dirigían a los usuarios a un sitio web malicioso con una interfaz idéntica al portal oficial de la
+    empresa; sin embargo, el dominio en la URL presentaba alteraciones respecto a la dirección auténtica.
+    Ante esta amenaza, el departamento de TI implementó una campaña de concientización y
+    prevención contra el phishing dirigida a todo el personal de Matrix, con el fin de fortalecer la primera línea
+    de defensa de la organización.
+    Los objetivos logrados de la campaña fueron:
+      • Sensibilizar a los usuarios sobre los riesgos de compartir información confidencial en sitios o con
+      remitentes no verificados.
+      • Proporcionar herramientas prácticas para detectar indicadores de engaño (direcciones de correo
+      falsas, urgencia injustificada, URL sospechosas).
+      • Mitigar la exposición a fugas de datos, accesos no autorizados y pérdidas financieras o
+      reputacionales.
+      • Enseñar al personal el procedimiento correcto para notificar inmediatamente cualquier correo
+      sospechoso al equipo de seguridad.
+    <br>
+    <a href="images/Act4/Actividad4.pdf" download="Actividad4.pdf" class="btn-descargar">
     Descargar Informe
     </a>
     </p>
     <br>
-    <p>Desarrollo</p>
+    <p>Objetivo de la Actividad</p>
+    <p>Desarrollar en los colaboradores la capacidad de identificar, verificar y reportar correos o sitios web
+      fraudulentos, adquiriendo las habilidades necesarias para diferenciar un mensaje legítimo de un ataque
+      de phishing y así evitar la entrega involuntaria de credenciales e información confidencial.
+    </p>
+    <p>Descripción del escenario</p>
     <p>
-    Partiendo de los conceptos analizados en clase, la implementación del spyware se
-    llevó a cabo utilizando la biblioteca pynput.keyboard. Para lograr la captura de datos,
-    se inició un listener mediante el método listener.join, el cual permite que el programa
-    se mantenga en ejecución de fondo. De esta forma, el programa se mantiene
-    "escuchando" e interceptando todas las teclas pulsadas durante la sesión activa.
-    Este proceso de monitoreo se mantiene de forma ininterrumpida hasta que se presiona
-    la tecla de escape ("Esc"), la cual actúa como condición de salida. Una vez que se
-    presiona dicha tecla para finalizar el programa, el sistema genera automáticamente un
-    archivo de registro. En este documento se almacenan todos los logs de las teclas
-    capturadas, cada una documentada con su respectiva marca de tiempo generada
-    mediante la función datetime.now().
+      Durante los últimos días, colaboradores de la empresa de tecnología e innovación Matrix recibieron
+      correos electrónicos fraudulentos que suplantaban la identidad del departamento de TI. En dichos
+      mensajes se solicitaba con urgencia actualizar sus credenciales de acceso, bajo la amenaza de suspender
+      sus cuentas y desactivar su acceso a las herramientas de trabajo.
+      Tras la investigación, el equipo de ciberseguridad identificó que se trataba de un ataque de phishing.
+      Los correos dirigían a los usuarios a un sitio web malicioso con una interfaz idéntica al portal oficial de la
+      empresa; sin embargo, el dominio en la URL presentaba alteraciones respecto a la dirección auténtica.
+    </p>
+    <p>¿Qué es Credential Harvester? Y ¿Cuál es su función dentro de una campaña de phishing?</p>
+    <p>
+      Credential Harvester es un sistema, script o página duplicadora que se usa principalmente para la recolección de datos y
+      después para el robo de estas.
+      Su función dentro de una campaña phishing es obtener información de inicio de sesión en un sitio web o aplicación.
+    </p>
+    <p>Configuración del laboratorio</p>
     <figure class="bloque-imagen-centrada">
-        <img src="images/Act3/img3.png" alt="Descripción breve para accesibilidad">
-        <figcaption>Primera imagen del código documentado del spyware.</figcaption>
+        <img src="images/Act4/Img1.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Para esta actividad se hizo uso de la maquina virtual de Kali Linux la cual fue montada en Oracle
+        VirtualBox</figcaption>
     </figure>
     <figure class="bloque-imagen-centrada">
-        <img src="images/Act3/img4.png" alt="Descripción breve para accesibilidad">
-        <figcaption>Segunda imagen del codigo documentado del spyware</figcaption>
+        <img src="images/Act4/Img2.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Una vez instalado la máquina virtual hicimos uso de la herramienta Setoolkit</figcaption>
     </figure>
     <figure class="bloque-imagen-centrada">
-        <img src="images/Act3/img1.png" alt="Descripción breve para accesibilidad">
-        <figcaption>Primera imagen del spyware en ejecución</figcaption>
+        <img src="images/Act4/Img3.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Para la suplantación de la página web, se creó una página web ficticia a la que se le denomino “Matrix”</figcaption>
+    </figure>
+    <p>Evidencias y descripción del funcionamiento</p>
+    <figure class="bloque-imagen-centrada"> 
+        <img src="images/Act4/Img4.png" alt="Descripción breve para accesibilidad">
+        <figcaption>En la herramienta de Setoolkit usamos la función “Social-Engineering Attacks”</figcaption>
     </figure>
     <figure class="bloque-imagen-centrada">
-        <img src="images/Act3/img2.png" alt="Descripción breve para accesibilidad">
-        <figcaption>Segunda imagen del spyware en ejecución</figcaption>
+        <img src="images/Act4/Img5.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Después seleccionamos la opción de “Website Attack Vectors”</figcaption>
     </figure>
     <figure class="bloque-imagen-centrada">
-        <img src="images/Act3/img5.png" alt="Descripción breve para accesibilidad">
-        <figcaption>Imagen del spyware en ejecución mientras realizaba el documento.</figcaption>
+        <img src="images/Act4/Img6.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Después de eso seleccionamos la opción de “Credential Harvester Attack Method”</figcaption>
     </figure>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act4/Img7.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Continuamos seleccionando la opción de “Custom Import” y procedemos a poner la dirección de la carpeta donde se
+        encuentran nuestros archivos de la página web ficticia:</figcaption>
+    </figure>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act4/Img8.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Copiamos toda la carpeta de los archivos y después ponemos ingresamos la dirección URL a la que será redireccionada la
+        victima</figcaption>
+    </figure>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act4/Img9.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Ingresamos a nuestro navegador de confianza aparentando ser la victima que intenta ingresar a la página oficial de la
+        empresa, el atacante con Setoolkit redirecciona al usuario a la página duplicada donde se robara las credenciales del usuario:</figcaption>
+    </figure>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act4/Img10.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Ingresamos nuestras credenciales como usuario pensando que nos encontramos en la pagina web legitima:
+        </figcaption>
+    </figure>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act4/Img11.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Justo después de dar click en el botón de “Iniciar Sesion” las credenciales son enviadas al hacker y el usuario es
+        redireccionado al sitio web oficial de la empresa.</figcaption>
+    </figure>
+    <p>De esta forma logramos robar las credenciales del usuario obteniendo el usuario o correo: mikesalazar4321@gmail.com y su
+    contraseña: Password4321Mike</p>
+
+    <p>Controles de seguridad propuestos</p>
+    <p>
+      Para desarrollar un plan de control para evitar caer en ataques de Phishing me base en el plan de “Concientización sobre
+      seguridad de Kaspersky” planteando los siguientes puntos para evitar el ataque Phishing
+        • Revisar al remitente y dominio, si estos presentan irregularidades es un sitio fraudulento
+        • Mantener cabeza fría ante un correo o llamada donde lo que se busca es que el usuario caiga en pánico y así frenar
+        de golpe esa presión social para dar solución ante una situación como esta.
+        • Pasar el cursor sobre el link SIN dar click para observar a donde es que te dirige la URL
+        • Evitar la curiosidad y usar tu razonamiento lógico ¡Nadie te va a regalar un Iphone 17 Pro-Max!
+        • Confirmar dicha “indicación” por otro medio que no sea el sospechoso o los que te indique ese correo o mensaje
+        inquietante con tu jefe, compañero de trabajo o supervisor (Doble Verificación)
+        • Evitar descargar todo tipo de archivos que vengan en el posible correo/mensaje o llamada fraudulento
+        • Evitar dar click en cualquier parte del correo sospechoso
+        • Avisar inmediatamente a tus superiores o equipo de ciberseguridad para dar conocimiento de ataques de Phishing,
+        La comunicación es importante
+        • Leer el contenido del correo, ¡Google no te manda saludos cordiales!
+        • Aclararles a los usuarios las consecuencias legales de no hacer caso a estas medidas de prevención
     </p>
     <p>Conclusión</p>
     <p>
-      El desarrollo de esta práctica proporciona una perspectiva importante sobre la
-      ciberseguridad y genera una gran conciencia sobre las vulnerabilidades actuales. A
-      nivel técnico, la creación de este tipo de herramientas no es tan compleja como se
-      suele pensar; hoy en día, con las facilidades tecnológicas y el apoyo de la inteligencia
-      artificial, el desarrollo de estos programas es bastante accesible.
-      Esta experiencia demuestra que la mejor manera de aplicar estos conocimientos es
-      con un enfoque estrictamente académico y preventivo. Nos enseña la importancia de
-      ser cautelosos en nuestro entorno digital (teniendo cuidado con los enlaces o archivos
-      a los que damos clic) y refuerza el principio de hackeo ético: utilizar este aprendizaje
-      únicamente para nuestra formación y defensa, sin aplicarlo jamás de manera
-      perjudicial contra otras personas.
+      Para dar por terminado es importante dar un final de lo aprendido en esta actividad y lo importante
+      que es tener conocimiento de estas medidas de prevención, haciendo caso a la famosa frase “Mas vale
+      prevenir que lamentar”.
+      Página 10
+      Durante el desarrollo de la actividad aprendí el uso de la herramienta SEToolkit para enviar correos
+      de phishing y ya más principalmente en esta actividad duplicar un sitio ficticio y ya extracurricularmente
+      probando las funciones de la herramienta a duplicar sitios web legítimos.
+      Como conocimiento es importante ser consciente de lo fácil que puede llegar a ser hacer un ataque
+      como este y ser conscientes de las consecuencias ya sea de hacer el ataque o de no conocer reglas de
+      prevención para este tipo de situaciones. A veces pensamos que estas cosas no nos pasaran o que solo
+      pasan en las películas y que es muy complicado que alguien pueda hacer esto cuando la realidad es que
+      no, alguien con mínimos conocimientos en hack puede llegar hacer estas cochinadas con un fin que
+      desconocemos. Es importante nosotros como sociedad hacer conocimiento de esto y evitar que alguien
+      más le pase esto, y mucho más importante, nosotros (Quienes tenemos conocimiento de esto) no usar
+      esto en actos maliciosos sino dejarlo solo como practica y aprendizaje y quizá si Dios nos permite en algún
+      trabajo para alguna empresa como un Hacker de sombrero blanco.
     </p>
+    <p>Referencias</p>
+    <a href="https://www.kaspersky.com/enterprise-security/security-awareness">Concientización sobre seguridad de Kaspersky</a>
+    <a href="https://www.kaspersky.com/resource-center/definitions/spoofing">¿Qué es Credential Harvester?</a>
+    <a href="https://www.crowdstrike.com/en-us/cybersecurity-101/cyberattacks/credential-harvesting/">Función dentro de una campaña de Phishing</a>
   </div>
 </section>
 
