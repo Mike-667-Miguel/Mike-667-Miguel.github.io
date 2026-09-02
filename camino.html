@@ -1,12 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camino al exito</title>
+    <title>UNSC Data Stream - Ruta Táctica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="developer.css">
+    <style>
+        :root {
+            --halo-blue: #00f3ff;
+            --halo-glow: rgba(0, 243, 255, 0.6);
+            --halo-dark: #050b14;
+            --halo-panel: rgba(5, 15, 30, 0.85);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--halo-dark);
+            background-image: 
+                radial-gradient(circle at 50% 50%, #0a192f 0%, #02050a 100%);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Título Estilo Terminal UNSC */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--halo-blue);
+            padding-bottom: 15px;
+            box-shadow: 0 5px 15px var(--halo-glow);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            color: var(--halo-blue);
+            text-shadow: 0 0 10px var(--halo-blue);
+        }
+
+        p {
+            font-size: 0.8rem;
+            color: #8ab4f8;
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+
+        /* Contenedor del Caminito Serpenteante */
+        .snake-path {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 70px;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        /* Línea central holográfica que simula la serpiente */
+        .snake-path::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--halo-blue), #0051ff, var(--halo-blue));
+            box-shadow: 0 0 12px var(--halo-blue);
+            z-index: 1;
+        }
+
+        /* Nodo / Punto de Control */
+        .node-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Efecto serpiente: alternamos las posiciones a la izquierda y derecha */
+        .node-container:nth-child(odd) {
+            transform: translateX(-80px);
+        }
+
+        .node-container:nth-child(even) {
+            transform: translateX(80px);
+        }
+
+        .node {
+            width: 70px;
+            height: 70px;
+            background: var(--halo-panel);
+            border: 2px solid var(--halo-blue);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--halo-glow), inset 0 0 10px var(--halo-glow);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .node:hover {
+            transform: scale(1.15);
+            background: var(--halo-blue);
+            box-shadow: 0 0 25px var(--halo-blue), inset 0 0 15px #fff;
+        }
+
+        .node:hover span {
+            color: #000;
+            text-shadow: none;
+        }
+
+        .node span {
+            color: var(--halo-blue);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Tooltip Táctico (Mensaje flotante al pasar el cursor) */
+        .tooltip {
+            position: absolute;
+            bottom: 85px;
+            background: rgba(0, 10, 25, 0.95);
+            border: 1px solid var(--halo-blue);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            color: #fff;
+            box-shadow: 0 0 10px var(--halo-glow);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(10px);
+            pointer-events: none;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .node-container:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--halo-blue) transparent transparent transparent;
+        }
+
+        /* Indicador de estado debajo del nodo */
+        .node-label {
+            position: absolute;
+            top: 75px;
+            font-size: 0.65rem;
+            color: var(--halo-blue);
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px var(--halo-glow);
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
-    <h1>Camino al exito</h1>
+
+    <header>
+        <h1>UNSC // ARCHIVO TÁCTICO</h1>
+        <p>SECTOR DE APRENDIZAJE: ANILLO 04</p>
+    </header>
+
+    <div class="snake-path">
+        <div class="node-container">
+            <a href="mision1.html" class="node">
+                <span>01</span>
+                <div class="tooltip">ACCEDER // DESCARGAR RECURSO PDF</div>
+            </a>
+            <div class="node-label">MISIÓN: INICIO</div>
+        </div>
+
+        <div class="node-container">
+            <a href="mision2.html" class="node">
+                <span>02</span>
+                <div class="tooltip">ACCEDER // DESCARGAR RECURSO PDF</div>
+            </a>
+            <div class="node-label">MISIÓN: INSTALACIÓN</div>
+        </div>
+
+        <div class="node-container">
+            <a href="mision3.html" class="node">
+                <span>03</span>
+                <div class="tooltip">ACCEDER // DESCARGAR RECURSO PDF</div>
+            </a>
+            <div class="node-label">MISIÓN: EL DELTA</div>
+        </div>
+
+        <div class="node-container">
+            <a href="mision4.html" class="node">
+                <span>04</span>
+                <div class="tooltip">ACCEDER // DESCARGAR RECURSO PDF</div>
+            </a>
+            <div class="node-label">MISIÓN: PROTOCOLO</div>
+        </div>
+    </div>
+
 </body>
 </html>
