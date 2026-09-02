@@ -183,6 +183,76 @@
             text-shadow: 0 0 5px var(--halo-glow);
             white-space: nowrap;
         }
+/*#####################################################*/
+        /*CSS de boton descargar pdf*/
+/*#####################################################*/
+
+        /* Color naranja táctico estilo alerta de Halo */
+        :root {
+            --halo-orange: #ffb700;
+        }
+
+        /* NUEVO: Estilos del panel flotante de acciones */
+        .action-panel {
+            position: absolute;
+            bottom: 80px;
+            background: rgba(2, 8, 18, 0.95);
+            border: 1px solid var(--halo-blue);
+            padding: 10px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            box-shadow: 0 0 15px var(--halo-glow);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(10px);
+            pointer-events: none; /* Evita que estorbe cuando está oculto */
+            text-align: center;
+            min-width: 150px;
+        }
+
+        /* NUEVO: Al pasar el cursor por el contenedor, se muestra el panel y se activa el mouse */
+        .node-container:hover .action-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto; /* Permite hacer clic dentro del panel */
+        }
+
+        .action-panel::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--halo-blue) transparent transparent transparent;
+        }
+
+        /* NUEVO: Estilos específicos para el botón del PDF */
+        .pdf-btn {
+            background: transparent;
+            border: 1px solid var(--halo-orange);
+            color: var(--halo-orange);
+            padding: 5px 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            letter-spacing: 1px;
+        }
+
+        .pdf-btn:hover {
+            background: var(--halo-orange);
+            color: #000;
+            box-shadow: 0 0 8px var(--halo-orange);
+        }
     </style>
 </head>
 <body>
