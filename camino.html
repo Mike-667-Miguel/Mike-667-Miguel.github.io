@@ -35,7 +35,7 @@
         }
 
         /* Título Estilo Terminal UNSC */
-        header {
+        .title-container {
             text-align: center;
             margin-bottom: 50px;
             border-bottom: 2px solid var(--halo-blue);
@@ -188,10 +188,27 @@
 <body>
 
     <header>
+        <nav class="navbar-horizontal">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="parcial1.html" class="nav-link">Parcial 1</a>
+            <a href="parcial2.html" class="nav-link">Parcial 2</a>
+            <a href="parcial3.html" class="nav-link">Parcial 3</a>
+            <a href="final.html" class="nav-link">Final</a>
+            <!-- OPCIÓN DESPLEGABLE -->
+            <div class="dropdown">
+            <a href="#" class="nav-link">Índice ▾</a>
+            <div class="dropdown-menu">
+                <a href="#actividad-03">Actividad 03</a>
+                <a href="#actividad-04">Actividad 04</a>
+            </div>
+            </div>
+            <a href="camino.html" class="nav-link">Camino al exito</a>
+        </nav>
+    </header>
+    <div class="title-container">
         <h1>UNSC // ARCHIVO TÁCTICO</h1>
         <p>SECTOR DE APRENDIZAJE: ANILLO 04</p>
-    </header>
-
+    </div>
     <div class="snake-path">
         <div class="node-container">
             <a href="mision1.html" class="node">
