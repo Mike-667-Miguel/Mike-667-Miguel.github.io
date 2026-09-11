@@ -298,11 +298,26 @@
   text-align: left;
 }
 
-/*Actividad 5*/
+/*Parcial 2 | Act 7*/
 /*Efecto Hero Section - Image*/
 .hero-sectionPP2 {
   height: 100vh; /* Ocupa toda la altura de la ventana */
   background-image: url('images/Act7/rojo.jpg'); /* Cambia la ruta a tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10%; /* Espacio a la izquierda para separar del borde */
+  text-align: left;
+}
+/*Parcial 2 | Act 8*/
+/*Efecto Hero Section - Image*/
+.hero-sectionPP3 {
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-image: url('images/Act8/muerte.jpg'); /* Cambia la ruta a tu imagen */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
