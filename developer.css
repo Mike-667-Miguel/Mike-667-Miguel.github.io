@@ -328,3 +328,18 @@
   padding-left: 10%; /* Espacio a la izquierda para separar del borde */
   text-align: left;
 }
+/*Parcial 2 | Act 9*/
+/*Efecto Hero Section - Image*/
+.hero-sectionPP3 {
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-image: url('images/Act9/doom.jpg'); /* Cambia la ruta a tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10%; /* Espacio a la izquierda para separar del borde */
+  text-align: left;
+}
