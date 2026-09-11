@@ -343,7 +343,7 @@
   padding-left: 10%; /* Espacio a la izquierda para separar del borde */
   text-align: left;
 }
-/*Parcial 2 | Act 9*/
+/*Parcial 2 | Act 10*/
 /*Efecto Hero Section - Image*/
 .hero-sectionPP5 {
   height: 100vh; /* Ocupa toda la altura de la ventana */
@@ -358,3 +358,20 @@
   padding-left: 10%; /* Espacio a la izquierda para separar del borde */
   text-align: left;
 }
+/*Parcial 2 | Act 11*/
+/*Efecto Hero Section - Image*/
+.hero-sectionPP6 {
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-image: url('images/Act11/virus.jpg'); /* Cambia la ruta a tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10%; /* Espacio a la izquierda para separar del borde */
+  text-align: left;
+}
+
+
