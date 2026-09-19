@@ -44,7 +44,164 @@
     <p>Universidad Politécnica de San Luis Potosi</p>
     <p>Act 7 | SIMPLE CASE</p>
     <p>10/09/26</p>
-    <br>  
+    <br>
+    <h3>Introducción</h3>
+    <p>
+      En la actualidad, el desarrollo de aplicaciones web se ha convertido en el <br>
+      pilar fundamental de la mayoría de los servicios digitales que consumimos a diario. <br>
+      Sin embargo, junto con la evolución de la tecnología, también han evolucionado las <br>
+      técnicas que utilizan los ciberdelincuentes para vulnerar estos sistemas. Una de las <br>
+      vulnerabilidades más críticas y, a menudo, subestimadas es el File Path Traversal <br>
+      (también conocido como Directory Traversal). Comprender y saber explotar esta <br>
+      vulnerabilidad no es un fin en sí mismo, sino una herramienta fundamental para que <br>
+      los desarrolladores y profesionales de la ciberseguridad puedan entender cómo <br>
+      piensa un atacante y, de esta manera, construir defensas sólidas. <br>
+
+      La importancia de saber usar herramientas como Burp Suite para detectar y <br>
+      explotar el Path Traversal radica en la necesidad de proteger la integridad de los <br>
+      sistemas. Un atacante que domina esta técnica puede acceder a archivos críticos del <br>
+      servidor, como configuraciones, contraseñas o datos de usuarios, lo que pone en <br>
+      riesgo total la confidencialidad, integridad y disponibilidad de la información (la tríada <br>
+      CIA). Al entender cómo funciona el uso de secuencias como ../ para navegar fuera <br>
+      del directorio raíz web, los defensores pueden implementar validaciones de entrada <br>
+      estrictas, listas blancas y configuraciones de servidor adecuadas. En resumen, <br>
+      estudiar el Path Traversal es una lección esencial de defensa: para proteger una <br>
+      fortaleza, primero hay que saber cómo un enemigo podría escalar sus muros. <br>
+    </p>
+    <br>
+    <h3>Marco teorico</h3>
+    <p>
+      El File Path Traversal (o Directory Traversal) es una vulnerabilidad de seguridad <br>
+      web que permite a un atacante leer archivos arbitrarios en el servidor que ejecuta <br>
+      una aplicación. Esta falla ocurre cuando una aplicación web utiliza datos <br>
+      proporcionados por el usuario para construir una ruta de archivo, sin la debida <br>
+      sanitización o validación. El atacante explota esta confianza para "viajar" fuera del <br>
+      directorio previsto (generalmente el directorio web) y acceder a archivos del sistema <br>
+      operativo que no deberían estar expuestos. <br>
+
+      El núcleo del ataque reside en el uso de secuencias de puntos y barras (../). En los <br>
+      sistemas operativos basados en Unix/Linux, el símbolo .. representa el directorio <br>
+      padre. Al concatenar múltiples instancias de ../, el atacante puede subir en la <br>
+      jerarquía de directorios del servidor. Por ejemplo, si una aplicación web solicita una <br>
+      imagen mediante filename=imagen.jpg y el código del servidor hace <br>
+      readfile("/var/www/images/" . $_GET['filename']), el atacante puede modificar la <br>
+      petición a filename=../../../etc/passwd. El servidor, al no validar la entrada, resolverá <br>
+      la ruta como /etc/passwd, un archivo crítico que contiene la lista de usuarios del <br>
+      sistema. <br>
+    </p>
+    <p>Contramedidas:</p>
+    <br>
+    <p>
+      - Evitar el uso de nombres de archivo proporcionados por el usuario: Usar IDs numéricos en su lugar. 
+      <br>
+      - Validación por Lista Blanca: Solo permitir nombres de archivos específicos predefinidos. 
+      <br>
+      - Sanitización con basename(): Función que extrae únicamente el nombre del archivo, eliminando cualquier ruta de directorio. 
+      <br>
+      - Validación de Extensiones: Asegurar que el archivo solicitado tenga la extensión esperada (ej. .jpg, .png). 
+      <br>
+      - Configuración del Servidor: Almacenar los archivos fuera del directorio raíz web y usar permisos de sistema de archivos restrictivos. 
+      <br>
+    </p>
+    <h3>Documentación técnica de laboratorio  </h3>
+    <br>
+    <p>
+      El laboratorio presenta una aplicación de comercio electrónico que carga imágenes <br>
+      de productos a través de una URL predecible: GET /image?filename=imagen.jpg. El <br>
+      código del servidor backend toma el valor del parámetro filename y lo concatena <br>
+      directamente a una ruta base en el sistema de archivos (ej. /var/www/images/) sin <br>
+      aplicar ninguna validación o sanitización previa. Esta falta de control permite que un <br>
+      atacante inserte secuencias de navegación (../) para salir del directorio de imágenes <br>
+      y acceder a cualquier archivo del sistema. <br>
+      La petición original observada en Burp Suite es: <br>
+      
+      GET /image?filename=21.jpg HTTP/1.1 <br>
+      El parámetro filename es el punto de entrada vulnerable. El objetivo del laboratorio <br>
+      es leer el archivo /etc/passwd del servidor. La alteración de la consulta consiste en <br>
+      reemplazar el nombre de la imagen legítima por una carga útil (payload) de <br>
+      traversía. La petición maliciosa queda de la siguiente manera: <br>
+      GET /image?filename=../../../etc/passwd HTTP/1.1 <br>
+      Aquí, la secuencia ../../../ le indica al sistema de archivos que suba tres niveles <br>
+      desde el directorio actual (/var/www/images/) hasta la raíz (/), para luego acceder al <br>
+      directorio etc y leer el archivo passwd. La petición mantiene todas las cabeceras <br>
+      originales (Host, Cookie de sesión, User-Agent), lo que demuestra que el ataque se <br>
+      realiza dentro del contexto autenticado de la aplicación. <br>
+    </p>
+    <h3>Desarrollo</h3>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act7/img1.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Abrimos el navegador que nos proporciona el software </figcaption>
+    </figure>
+    <br>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act7/img2.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Buscamos la URL proporcionada para acceder a la actividad </figcaption>
+    </figure>
+    <br>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act7/img3.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Nos aparecerán estas dos respuestas, continuaremos dando Forward para que cargue la página correctamente. Previo a todo esto es obligatorio encender el botón de “Intercep” para que obtenga todo el tráfico, nosotros haremos caso solamente a las peticiones que nos interesan.</figcaption>
+    </figure>
+    <br>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act7/img4.png" alt="Descripción breve para accesibilidad">
+        <figcaption></figcaption>
+    </figure>
+    <br>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act7/img5.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Enseguida de dar forward a las primeras dos peticiones, nos aparecerá  la página completa, daremos click en cualquiera de las imágenes justo donde dice “View details”.</figcaption>
+    </figure>
+    <br>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act7/img6.png" alt="Descripción breve para accesibilidad">
+        <figcaption>En la parte de Proxy/lntercept  comenzaremos a ver que nos saldrán más peticiones daremos click en forward hasta llegar a las peticiones que en este caso nos importan que serán las de tipo “image”.</figcaption>
+    </figure>
+    <br>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act7/img7.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Daremos click derecho y se nos desplegaran varias opciones, a nosotros nos interesa la que dice “Send to Repeater” que como su nombre lo dice es al Repetidor a donde mandaremos esta petición y donde la analizaremos.</figcaption>
+    </figure>
+    <br>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act7/img8.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Una vez estemos dentro de la sección del repetidor apreciaremos que se encuentra parte del código de la petición que estamos analizando nos centraremos en la parte que dice filename, que es por donde haremos nuestro ataque. </figcaption>
+    </figure>
+    <br>
+    <figure class="bloque-imagen-centrada">
+        <img src="images/Act7/img9.png" alt="Descripción breve para accesibilidad">
+        <figcaption>Una vez identifiquemos el filename borraremos lo que tiene por defecto lo que se supone tiene que mandar al servidor, y lo cambiaremos por “../../../etc/passwd” lo que nos permitirá ver Usuarios, sus contraseñas encriptadas que se presentan con el carácter “x,” sus shell, sus ID de usuario como de grupo principal (UID y GID) así como su directorio principal. Información a la cual el usuario o en este caso el atacante no debería tener acceso.</figcaption>
+    </figure>
+    <br>
+    <h3>Conclusión</h3>
+    <p>
+      La resolución de este laboratorio de File Path Traversal nos deja una <br>
+      enseñanza clara y contundente: la seguridad en el desarrollo web no es un añadido, <br>
+      sino una necesidad imperante desde la primera línea de código. La vulnerabilidad <br>
+      explotada, aunque clasificada como "simple", demuestra que un solo descuido en la <br>
+      validación de entradas puede abrir una brecha gigantesca en la seguridad de todo un <br>
+      sistema. El acceso no autorizado al archivo /etc/passwd no es solo la lectura de un <br>
+      archivo; es la confirmación de que un atacante ha superado las defensas perimetrales <br>
+      y ahora tiene información privilegiada que puede usar para escalar privilegios o <br>
+      preparar ataques más sofisticados. <br>
+
+      El uso de herramientas como Burp Suite se revela no solo como un medio para <br>
+      explotar, sino como un instrumento de diagnóstico fundamental. Para un futuro <br>
+      profesional de la ciberseguridad, la capacidad de interceptar, analizar y modificar <br> 
+      peticiones HTTP es la diferencia entre teorizar sobre una vulnerabilidad y <br>
+      comprenderla en su totalidad. Saber que la secuencia ../ es peligrosa es el primer <br> 
+      paso; saber exactamente cómo, por qué y en qué contexto se ejecuta esa <br>
+      peligrosidad es lo que permite diseñar defensas efectivas. <br>
+
+      En última instancia, este ejercicio refuerza el principio de "defensa en <br>
+      profundidad". No basta con una sola medida de seguridad. La combinación de una <br> 
+      validación estricta de entradas, el uso de listas blancas, la sanitización con funciones <br>
+      como basename() y una correcta configuración de permisos en el servidor son capas <br>
+      que, juntas, hacen que el sistema sea resiliente. Comprender el ataque desde la <br>
+      perspectiva del atacante, usando las mismas herramientas, es la mejor manera de <br>
+      anticiparse y proteger los activos digitales en un mundo donde las amenazas son <br>
+      cada vez más complejas y constantes. <br>
+    </p>
   </div>
 </section>
 
@@ -141,7 +298,8 @@
     <p>Universidad Politécnica de San Luis Potosi</p>
     <p>Act 11 | Validation of file extension with null byte bypass</p>
     <p>10/09/26</p>
-    <br>  
+    <br> 
+    
   </div>
 </section>
 
