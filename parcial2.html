@@ -51,47 +51,25 @@
     <br>
     <h3>Introducción</h3>
     <p>
-      En la actualidad, el desarrollo de aplicaciones web se ha convertido en el <br>
-      pilar fundamental de la mayoría de los servicios digitales que consumimos a diario. <br>
-      Sin embargo, junto con la evolución de la tecnología, también han evolucionado las <br>
-      técnicas que utilizan los ciberdelincuentes para vulnerar estos sistemas. Una de las <br>
-      vulnerabilidades más críticas y, a menudo, subestimadas es el File Path Traversal <br>
-      (también conocido como Directory Traversal). Comprender y saber explotar esta <br>
-      vulnerabilidad no es un fin en sí mismo, sino una herramienta fundamental para que <br>
-      los desarrolladores y profesionales de la ciberseguridad puedan entender cómo <br>
-      piensa un atacante y, de esta manera, construir defensas sólidas. <br>
+      En la actualidad, el desarrollo de aplicaciones web se ha convertido en el pilar fundamental de la mayoría de los servicios digitales que consumimos a diario. Sin embargo, junto con la evolución de la tecnología, también han evolucionado las <br>
+      técnicas que utilizan los ciberdelincuentes para vulnerar estos sistemas. Una de las vulnerabilidades más críticas y, a menudo, subestimadas es el File Path Traversal (también conocido como Directory Traversal). Comprender y saber explotar esta <br>
+      vulnerabilidad no es un fin en sí mismo, sino una herramienta fundamental para que los desarrolladores y profesionales de la ciberseguridad puedan entender cómo piensa un atacante y, de esta manera, construir defensas sólidas. <br>
 
-      La importancia de saber usar herramientas como Burp Suite para detectar y <br>
-      explotar el Path Traversal radica en la necesidad de proteger la integridad de los <br>
-      sistemas. Un atacante que domina esta técnica puede acceder a archivos críticos del <br>
-      servidor, como configuraciones, contraseñas o datos de usuarios, lo que pone en <br>
-      riesgo total la confidencialidad, integridad y disponibilidad de la información (la tríada <br>
-      CIA). Al entender cómo funciona el uso de secuencias como ../ para navegar fuera <br>
-      del directorio raíz web, los defensores pueden implementar validaciones de entrada <br>
-      estrictas, listas blancas y configuraciones de servidor adecuadas. En resumen, <br>
-      estudiar el Path Traversal es una lección esencial de defensa: para proteger una <br>
+      La importancia de saber usar herramientas como Burp Suite para detectar y explotar el Path Traversal radica en la necesidad de proteger la integridad de los sistemas. Un atacante que domina esta técnica puede acceder a archivos críticos del <br>
+      servidor, como configuraciones, contraseñas o datos de usuarios, lo que pone en riesgo total la confidencialidad, integridad y disponibilidad de la información (la tríada CIA). Al entender cómo funciona el uso de secuencias como ../ para navegar fuera <br>
+      del directorio raíz web, los defensores pueden implementar validaciones de entrada estrictas, listas blancas y configuraciones de servidor adecuadas. En resumen, estudiar el Path Traversal es una lección esencial de defensa: para proteger una <br>
       fortaleza, primero hay que saber cómo un enemigo podría escalar sus muros. <br>
     </p>
     <br>
     <h3>Marco teorico</h3>
     <p>
-      El File Path Traversal (o Directory Traversal) es una vulnerabilidad de seguridad <br>
-      web que permite a un atacante leer archivos arbitrarios en el servidor que ejecuta <br>
-      una aplicación. Esta falla ocurre cuando una aplicación web utiliza datos <br>
-      proporcionados por el usuario para construir una ruta de archivo, sin la debida <br>
-      sanitización o validación. El atacante explota esta confianza para "viajar" fuera del <br>
-      directorio previsto (generalmente el directorio web) y acceder a archivos del sistema <br>
+      El File Path Traversal (o Directory Traversal) es una vulnerabilidad de seguridad web que permite a un atacante leer archivos arbitrarios en el servidor que ejecuta una aplicación. Esta falla ocurre cuando una aplicación web utiliza datos <br>
+      proporcionados por el usuario para construir una ruta de archivo, sin la debida sanitización o validación. El atacante explota esta confianza para "viajar" fuera del directorio previsto (generalmente el directorio web) y acceder a archivos del sistema <br>
       operativo que no deberían estar expuestos. <br>
 
-      El núcleo del ataque reside en el uso de secuencias de puntos y barras (../). En los <br>
-      sistemas operativos basados en Unix/Linux, el símbolo .. representa el directorio <br>
-      padre. Al concatenar múltiples instancias de ../, el atacante puede subir en la <br>
-      jerarquía de directorios del servidor. Por ejemplo, si una aplicación web solicita una <br>
-      imagen mediante filename=imagen.jpg y el código del servidor hace <br>
-      readfile("/var/www/images/" . $_GET['filename']), el atacante puede modificar la <br>
-      petición a filename=../../../etc/passwd. El servidor, al no validar la entrada, resolverá <br>
-      la ruta como /etc/passwd, un archivo crítico que contiene la lista de usuarios del <br>
-      sistema. <br>
+      El núcleo del ataque reside en el uso de secuencias de puntos y barras (../). En los sistemas operativos basados en Unix/Linux, el símbolo .. representa el directorio padre. Al concatenar múltiples instancias de ../, el atacante puede subir en la <br>
+      jerarquía de directorios del servidor. Por ejemplo, si una aplicación web solicita una imagen mediante filename=imagen.jpg y el código del servidor hace readfile("/var/www/images/" . $_GET['filename']), el atacante puede modificar la <br>
+      petición a filename=../../../etc/passwd. El servidor, al no validar la entrada, resolverá la ruta como /etc/passwd, un archivo crítico que contiene la lista de usuarios del sistema. <br>
     </p>
     <p>Contramedidas:</p>
     <br>
@@ -110,26 +88,15 @@
     <h3>Documentación técnica de laboratorio  </h3>
     <br>
     <p>
-      El laboratorio presenta una aplicación de comercio electrónico que carga imágenes <br>
-      de productos a través de una URL predecible: GET /image?filename=imagen.jpg. El <br>
-      código del servidor backend toma el valor del parámetro filename y lo concatena <br>
-      directamente a una ruta base en el sistema de archivos (ej. /var/www/images/) sin <br>
-      aplicar ninguna validación o sanitización previa. Esta falta de control permite que un <br>
-      atacante inserte secuencias de navegación (../) para salir del directorio de imágenes <br>
-      y acceder a cualquier archivo del sistema. <br>
-      La petición original observada en Burp Suite es: <br>
+      El laboratorio presenta una aplicación de comercio electrónico que carga imágenes de productos a través de una URL predecible: GET /image?filename=imagen.jpg. El código del servidor backend toma el valor del parámetro filename y lo concatena <br>
+      directamente a una ruta base en el sistema de archivos (ej. /var/www/images/) sin aplicar ninguna validación o sanitización previa. Esta falta de control permite que un atacante inserte secuencias de navegación (../) para salir del directorio de imágenes <br>
+      y acceder a cualquier archivo del sistema. La petición original observada en Burp Suite es: <br>
       
       GET /image?filename=21.jpg HTTP/1.1 <br>
-      El parámetro filename es el punto de entrada vulnerable. El objetivo del laboratorio <br>
-      es leer el archivo /etc/passwd del servidor. La alteración de la consulta consiste en <br>
-      reemplazar el nombre de la imagen legítima por una carga útil (payload) de <br>
-      traversía. La petición maliciosa queda de la siguiente manera: <br>
-      GET /image?filename=../../../etc/passwd HTTP/1.1 <br>
-      Aquí, la secuencia ../../../ le indica al sistema de archivos que suba tres niveles <br>
-      desde el directorio actual (/var/www/images/) hasta la raíz (/), para luego acceder al <br>
-      directorio etc y leer el archivo passwd. La petición mantiene todas las cabeceras <br>
-      originales (Host, Cookie de sesión, User-Agent), lo que demuestra que el ataque se <br>
-      realiza dentro del contexto autenticado de la aplicación. <br>
+      El parámetro filename es el punto de entrada vulnerable. El objetivo del laboratorio es leer el archivo /etc/passwd del servidor. La alteración de la consulta consiste en reemplazar el nombre de la imagen legítima por una carga útil (payload) de <br>
+      traversía. La petición maliciosa queda de la siguiente manera: GET /image?filename=../../../etc/passwd HTTP/1.1 <br>
+      Aquí, la secuencia ../../../ le indica al sistema de archivos que suba tres niveles desde el directorio actual (/var/www/images/) hasta la raíz (/), para luego acceder al directorio etc y leer el archivo passwd. La petición mantiene todas las cabeceras <br>
+      originales (Host, Cookie de sesión, User-Agent), lo que demuestra que el ataque se realiza dentro del contexto autenticado de la aplicación. <br>
     </p>
     <h3>Desarrollo</h3>
     <figure class="bloque-imagen-centrada">
@@ -179,32 +146,17 @@
     <br>
     <h3>Conclusión</h3>
     <p>
-      La resolución de este laboratorio de File Path Traversal nos deja una <br>
-      enseñanza clara y contundente: la seguridad en el desarrollo web no es un añadido, <br>
-      sino una necesidad imperante desde la primera línea de código. La vulnerabilidad <br>
-      explotada, aunque clasificada como "simple", demuestra que un solo descuido en la <br>
-      validación de entradas puede abrir una brecha gigantesca en la seguridad de todo un <br>
-      sistema. El acceso no autorizado al archivo /etc/passwd no es solo la lectura de un <br>
-      archivo; es la confirmación de que un atacante ha superado las defensas perimetrales <br>
-      y ahora tiene información privilegiada que puede usar para escalar privilegios o <br>
-      preparar ataques más sofisticados. <br>
+      La resolución de este laboratorio de File Path Traversal nos deja una enseñanza clara y contundente: la seguridad en el desarrollo web no es un añadido, sino una necesidad imperante desde la primera línea de código. La vulnerabilidad <br>
+      explotada, aunque clasificada como "simple", demuestra que un solo descuido en la validación de entradas puede abrir una brecha gigantesca en la seguridad de todo un sistema. El acceso no autorizado al archivo /etc/passwd no es solo la lectura de un <br>
+      archivo; es la confirmación de que un atacante ha superado las defensas perimetrales y ahora tiene información privilegiada que puede usar para escalar privilegios o preparar ataques más sofisticados. <br>
 
-      El uso de herramientas como Burp Suite se revela no solo como un medio para <br>
-      explotar, sino como un instrumento de diagnóstico fundamental. Para un futuro <br>
-      profesional de la ciberseguridad, la capacidad de interceptar, analizar y modificar <br> 
-      peticiones HTTP es la diferencia entre teorizar sobre una vulnerabilidad y <br>
-      comprenderla en su totalidad. Saber que la secuencia ../ es peligrosa es el primer <br> 
-      paso; saber exactamente cómo, por qué y en qué contexto se ejecuta esa <br>
+      El uso de herramientas como Burp Suite se revela no solo como un medio para explotar, sino como un instrumento de diagnóstico fundamental. Para un futuro profesional de la ciberseguridad, la capacidad de interceptar, analizar y modificar <br> 
+      peticiones HTTP es la diferencia entre teorizar sobre una vulnerabilidad y comprenderla en su totalidad. Saber que la secuencia ../ es peligrosa es el primer paso; saber exactamente cómo, por qué y en qué contexto se ejecuta esa <br>
       peligrosidad es lo que permite diseñar defensas efectivas. <br>
 
-      En última instancia, este ejercicio refuerza el principio de "defensa en <br>
-      profundidad". No basta con una sola medida de seguridad. La combinación de una <br> 
-      validación estricta de entradas, el uso de listas blancas, la sanitización con funciones <br>
-      como basename() y una correcta configuración de permisos en el servidor son capas <br>
-      que, juntas, hacen que el sistema sea resiliente. Comprender el ataque desde la <br>
-      perspectiva del atacante, usando las mismas herramientas, es la mejor manera de <br>
-      anticiparse y proteger los activos digitales en un mundo donde las amenazas son <br>
-      cada vez más complejas y constantes. <br>
+      En última instancia, este ejercicio refuerza el principio de "defensa en profundidad". No basta con una sola medida de seguridad. La combinación de una validación estricta de entradas, el uso de listas blancas, la sanitización con funciones <br>
+      como basename() y una correcta configuración de permisos en el servidor son capas que, juntas, hacen que el sistema sea resiliente. Comprender el ataque desde la perspectiva del atacante, usando las mismas herramientas, es la mejor manera de <br>
+      anticiparse y proteger los activos digitales en un mundo donde las amenazas son cada vez más complejas y constantes. <br>
     </p>
   </div>
 </section>
