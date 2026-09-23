@@ -184,6 +184,8 @@
       En el laboratorio anterior logramos leer el archivo ../../../etc/passwd exitosamente, pero eso fue en un escenario "ideal" donde no había defensas. En el mundo real, los desarrolladores ya conocen el peligro del Path Traversal e intentan bloquearlo filtrando la secuencia ../. Sin embargo, la seguridad es un juego de ataque y defensa: filtrar una sola cadena de texto no es suficiente. Un atacante puede usar la ruta absoluta como una técnica simple pero efectiva para saltarse el filtro y acceder directamente al archivo objetivo. 
       La lección clave de este laboratorio es: la defensa debe ser sistémica, no fragmentada. Si el desarrollador solo bloquea ../ pero olvida que la ruta absoluta también es peligrosa, esa "defensa" es inútil. Entender esta técnica de bypass nos ayuda a diseñar mecanismos de seguridad más completos, que no solo bloqueen patrones de ataque conocidos, sino que partan del principio fundamental de que toda entrada del usuario es potencialmente maliciosa.
     </p>
+    <br>
+    <br>
     <h3>Marco Teorico</h3>
     <p>
       El error común en la defensa contra Path Traversal 
@@ -196,13 +198,14 @@
       La lección para la defensa 
       La defensa correcta requiere normalizar la ruta y validar el prefijo: primero resolver la entrada del usuario en una ruta absoluta canónica, y luego verificar si esa ruta está realmente dentro del directorio seguro esperado. Si la ruta resuelta no comienza con el directorio seguro, se rechaza la petición.
     </p>
+    <br>
+    <br>
     <h3>Desarrollo</h3>
     <figure class="bloque-imagen-centrada">
         <img src="images/Act7/img1.png" alt="Descripción breve para accesibilidad">
         <figcaption>En nuestro PortSwigger abriremos la actividad Traversal sequences blocked with absolute path bypass, que es una variante a esta tan famos vulnerabilidad. </figcaption>
     </figure>
     <br>
-    <h3>Desarrollo</h3>
     <figure class="bloque-imagen-centrada">
         <img src="images/Act8/img2.png" alt="Descripción breve para accesibilidad">
         <figcaption>Una vez pegada la url en nuestro navegador proporcionado por BurpSuit nos aparecerá la siguiente página, que es desde donde efectuaremos nuestro ataque. </figcaption>
