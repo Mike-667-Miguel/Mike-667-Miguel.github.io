@@ -120,10 +120,16 @@
 }
 
 .info-contenedor{
-  max-width: 95%;
+  text-align: justify;        
+  max-width: 800px;
   margin: 0 auto;
+  padding: 40px;
   font-family: sans-serif;
-  line-height: 1.6;
+  line-height: 1.5;
+}
+.info-contenedor p {
+  bottom: 6pt;         /* Espacio entre párrafos */
+  text-indent: 0;             
 }
 
 .info-contenedor h2 {
