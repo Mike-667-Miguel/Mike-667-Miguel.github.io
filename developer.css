@@ -456,4 +456,20 @@
   text-align: left;
 }
 
+/*Parcial 3 | Act16*/
+/*Efecto Hero Section - Image*/
+.hero-section16 {
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-image: url('images/Act16/freefire.jpg'); /* Cambia la ruta a tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10%; /* Espacio a la izquierda para separar del borde */
+  text-align: left;
+}
+
 
