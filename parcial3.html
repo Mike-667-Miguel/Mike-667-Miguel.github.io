@@ -23,6 +23,7 @@
         <a href="parcial3.html#act17">Actividad 17 | La memoria del crimen</a>
         <a href="parcial3.html#act18">Actividad 18 | La investigación forense</a>
         <a href="parcial3.html#act19">Actividad 19 | Los primeros minutos cuentan</a>
+        <a href="parcial3.html#PR3">PR3 | Operación narcos: expediente Kowhai</a>
       </div>
     </div>
     <a href="camino.html" class="nav-link">Camino al exito</a>
@@ -115,6 +116,73 @@
     <p>12/11/2026</p>
     <br> 
   </div>
+</section>
+
+<!--Efecto Hero Section Parcial 3 | PR3 -->
+<section class="hero-sectionPR3" id ="PR3">
+  <div class="hero-texto">
+    <h1>Parcial 3</h1>
+    <h2>PR3 | Operación narcos: expediente Kowhai</h2>
+    <p>Desplace para empezar</p>
+  </div>
+</section>
+<section class="info-section" >
+  <div class="info-contenedor">
+    <h1>Operación narcos: expediente Kowhai</h1>
+    <p>Miguel Ángel Salazar Martinez | 183833</p>
+    <p>Profesor: Servando López</p>
+    <p>Universidad Politécnica de San Luis Potosi</p>
+    <p>PR3 | Operación narcos: expediente Kowhai</p>
+    <p>18/11/2026</p>
+    <br> 
+  </div><br><br>
+
+  <a href="images/PR3/SalazarMartinezMiguelAngel-PR3.pdf" download="SalazarMartinezMiguelAngel-PR3.pdf" class="btn-descargar">
+    Descargar Informe
+    </a><br><br>
+
+  <h3>CONTEXTO Y OBJETIVO</h3><br>
+  <p>La investigación de dispositivos vinculados al crimen organizado exige un análisis forense meticuloso para aislar evidencia crítica entre cientos de miles de archivos legítimos. Este peritaje se fundamenta en el análisis del escenario forense estandarizado Digital Corpora – Narcos (2019).
+      Objetivo Principal: Analizar la imagen forense en formato EnCase (E01) del equipo perteneciente a Steve Kowhai para identificar evidencia digital clave, reconstruir la línea de tiempo de los acontecimientos y establecer vínculos lógicos entre el dispositivo y las actividades de narcotráfico. La meta central es determinar mediante evidencia técnica (metadatos, artefactos y registros) qué acciones específicas se pueden comprobar a partir del disco duro.
+  </p><br><br>
+
+  <h3>HERRAMIENTAS UTILIZADAS</h3><br>
+  <p>El procesamiento y análisis de la evidencia se llevó a cabo en un entorno controlado, utilizando las siguientes herramientas:
+      FTK Imager (AccessData): Herramienta principal utilizada para la extracción, exploración de la imagen forense (E01), verificación de hashes de integridad, análisis de metadatos (fechas de creación/modificación) y exportación de archivos clave (como los registros de Prefetch y bases de datos de historiales).
+      Autopsy: (Mencionada como plataforma de soporte para la ingesta e indexación de la imagen de disco).
+      7-Zip: Utilizado para la extracción y unión de los archivos comprimidos segmentados de la evidencia original.
+      Evidencia Base: Imagen forense oficial Narcos-1</p><br><br>
+
+  <h3>METODOLOGÍA DE ANÁLISIS Y HALLAZGOS</h3><br>
+  <p>
+    El análisis se realizó sobre la imagen forense Narcos-1, siguiendo un flujo de trabajo estructurado para garantizar la validez de la evidencia:
+    Fase 1: Extracción y Validación. Ensamblaje de los 20 segmentos de la imagen y obtención de hashes para constatar la integridad del archivo original.
+    Fase 2: Perfilado del Sistema. Navegación por el sistema de archivos en FTK Imager para identificar la versión de Windows y la cuenta de usuario activa (Steve).
+    Fase 3: Análisis de Artefactos de Ejecución. Búsqueda de rastros de ejecución en los archivos de Prefetch (C:\Windows\Prefetch) y en el registro de Windows para confirmar el uso real de software anti-forense.
+    Fase 4: Recolección de Evidencia Documental. Extracción de metadatos (fechas, rutas y hashes MD5) de archivos clave como mapas, itinerarios de vuelo e imágenes de la operación.
+    Fase 5: Correlación de Datos. Vinculación de los archivos de logística (vuelos y mapas) con los hallazgos de software de comunicación para tejer la línea de tiempo de los hechos.
+
+    Hallazgos Clave de la Investigación:
+
+    ✦ Sistema Operativo: Windows 10 (identificado a través del perfil de usuario "Steve").
+    ✦ Navegación Web: Registro de actividad en Google Chrome e Internet Explorer. Se extrajo el hash MD5 del archivo History de Chrome.
+    ✦ Evidencia de Logística: Capturas de pantalla de Google Maps que revelan rutas críticas: una hacia la biblioteca de Eastbourne (punto de entrega) y otra hacia Wainuiomata (marcada con la palabra "Home").
+    ✦ Operación y Ocultamiento: Se confirmó la instalación y ejecución (a través de Prefetch) de TrueCrypt e Image Steganography, herramientas diseñadas para ocultar información.
+    ✦ Comunicaciones: Registro de uso de Discord (demostrado por la caché y archivos Prefetch), aunque la evidencia no permite recuperar el contenido de los chats.
+  </p><br><br>
+
+  <h3>CONCLUSIONES Y VISIÓN PROFESIONAL</h3><br>
+  <p>
+    Este análisis forense me permitió entender el ciclo de vida de la evidencia digital desde una perspectiva práctica. Si bien mi enfoque profesional está orientado hacia el pentesting y la seguridad ofensiva, realizar este tipo de peritajes es una experiencia invaluable.
+    Como futuro pentester, comprender cómo trabaja un investigador forense (el "blue team") me da una ventaja estratégica: sé exactamente qué rastros deja una herramienta cuando se ejecuta, qué metadatos se guardan y cómo se puede rastrear la actividad de un atacante (o, en este caso, de un criminal).
+    La mayor lección de este proyecto fue aprender a diferenciar la simple descarga de la ejecución real. Para un análisis defensivo o ofensivo, no basta con suponer; se necesitan artefactos como los archivos Prefetch o los registros del sistema que demuestren que un programa se abrió. Esta práctica reforzó mi capacidad para documentar hallazgos con rigor técnico y pensar como un verdadero investigador, lo cual es una habilidad transversal indispensable para cualquier rama de la ciberseguridad.
+  </p><br><br>
+
+  <h3>REFERENCIA OBLIGATORIA</h3><br>
+  <p>
+    Garfinkel, Farrell, Roussev y Dinolt. (2009). Bringing Science to Digital Forensics with Standardized Forensic Corpora. Digital Forensic Research Workshop (DFRWS), Montreal, Canadá. https://simson.net/clips/academic/2009.DFRWS.Corpora.pdf
+    Digital Corpora. (2019). 2019 Narcos Scenario [Conjunto de datos de práctica forense]. Recuperado de: https://digitalcorpora.org/
+  </p><br><br>
 </section>
 
 <body>
